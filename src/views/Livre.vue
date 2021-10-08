@@ -2,7 +2,7 @@
 <div>
     <LeftSideBar/>
      <!-- Start Welcome area -->
-    <div class="all-content-wrapper">
+    <div class="all-content-wrapper">   
         <div class="container-fluid">
             <div class="row">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -250,5 +250,16 @@ export default ({
 <style >
     .mg-b-pro-edt{
         border-right: 1px solid black;
+    }
+    .product-status-wrap table th {
+        vertical-align: bottom;
+        border: 2px solid #152036;
+        color: #fff;
+    }
+    .product-status-wrap table td {
+        padding: 9px 7px;
+        border: 1px solid #152036;
+        color: #fff;
+        font-size: 14px;
     }
 </style>

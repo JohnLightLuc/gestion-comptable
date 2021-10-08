@@ -303,4 +303,16 @@ export default ({
     .mg-b-pro-edt{
         border-right: 1px solid black;
     }
+
+    .product-status-wrap table th {
+        vertical-align: bottom;
+        border: 2px solid #152036;
+        color: #fff;
+    }
+    .product-status-wrap table td {
+        padding: 9px 7px;
+        border: 1px solid #152036;
+        color: #fff;
+        font-size: 14px;
+    }
 </style>

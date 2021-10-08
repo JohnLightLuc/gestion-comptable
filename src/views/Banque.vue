@@ -61,7 +61,7 @@
                                 <div class="product-tab-list tab-pane fade active in" id="description">
                                     <div class="row">
                                             <div class="" style="display: flex;">
-                                                <div class="input-group mg-b-pro-edt" style="width: 6%;">
+                                                <div class="input-group mg-b-pro-edt" style="width: 4%;">
                                                     <input type="text" class="form-control" placeholder="Jour" >
                                                 </div>
                                                 <div class="input-group mg-b-pro-edt" style="width: 7%;">
@@ -81,10 +81,10 @@
                                                 <div class="input-group mg-b-pro-edt" style="width: 40%;">
                                                     <input type="text" class="form-control" placeholder="Libellé d'écriture" >
                                                 </div>
-                                                <div class="input-group mg-b-pro-edt" style="width: 10%;">
+                                                <div class="input-group mg-b-pro-edt" style="width: 11%;">
                                                     <input type="text" class="form-control" placeholder="Debit">
                                                 </div>
-                                                <div class="input-group mg-b-pro-edt" style="width: 10%;">
+                                                <div class="input-group mg-b-pro-edt" style="width: 11%;">
                                                     <input type="text" class="form-control" placeholder="Credit">
                                                 </div>
                                             </div>
@@ -110,14 +110,14 @@
                             </div>
                             <table>
                                 <tr>
-                                    <th style="width: 6%;">Jour</th>
+                                    <th style="width: 4%;">Jour</th>
                                     <th style="width: 7%;">N° pièces</th>
                                     <th style="width: 9%;">References</th>
                                     <th style="width: 9%;">N° Compte courant</th>
                                     <th style="width: 9%;">N° Compte tiers</th>
                                     <th style="width: 40%;">Libellé écriture</th>
-                                    <th style="width: 10%;">Débit</th>
-                                    <th style="width: 10%;">Crédit</th>
+                                    <th style="width: 11%;">Débit</th>
+                                    <th style="width: 11%;">Crédit</th>
                                 </tr>
                                 <tr>
                                     <!-- Jour -->
@@ -303,4 +303,17 @@ export default ({
     .mg-b-pro-edt{
         border-right: 1px solid black;
     }
+
+    .product-status-wrap table th {
+        vertical-align: bottom;
+        border: 2px solid #152036;
+        color: #fff;
+    }
+    .product-status-wrap table td {
+        padding: 9px 7px;
+        border: 1px solid #152036;
+        color: #fff;
+        font-size: 14px;
+    }
+
 </style>
