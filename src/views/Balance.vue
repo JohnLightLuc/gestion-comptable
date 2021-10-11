@@ -24,9 +24,8 @@
                                 <div class="product-tab-list tab-pane fade active in" id="description">
                                     <div class="row">
                                             <div class="" >
-                                            
                                                  <div class="input-group mg-b-pro-edt">
-                                                    <span class="input-group-addon">Exercice</span>
+                                                    <span class="input-group-addon">Exercice :</span>
                                                     <select name="select" class="form-control pro-edt-select form-control-primary">
                                                         <option value="opt1">Année</option>
                                                         <option value="opt2">2018</option>
@@ -36,19 +35,16 @@
                                                         <option value="opt6">2022</option>
                                                     </select>
                                                 </div>
-                                            
                                                 <div class="input-group mg-b-pro-edt">
-                                                    <span class="input-group-addon">Date de debut de l'exercice</span>
-                                                    <input type="date" class="form-control" >
-                                                </div> 
-                                                
-                                                <div class="input-group mg-b-pro-edt">
-                                                    <span class="input-group-addon">Date de fin de l'exercice</span>
+                                                    <span class="input-group-addon">Date de debut de l'exercice :</span>
                                                     <input type="date" class="form-control" >
                                                 </div>
-                                                
                                                 <div class="input-group mg-b-pro-edt">
-                                                    <span class="input-group-addon">Type de balance</span>
+                                                    <span class="input-group-addon">Date de fin de l'exercice :</span>
+                                                    <input type="date" class="form-control" >
+                                                </div>
+                                                <div class="input-group mg-b-pro-edt">
+                                                    <span class="input-group-addon">Type de balance :</span>
                                                     <select name="select" class="form-control pro-edt-select form-control-primary">
                                                         <option value="opt1">Balance générale</option>
                                                         <option value="opt2">Balance auxiliaire</option>
@@ -57,25 +53,21 @@
                                                 </div>
                                                 <div class="form-group data-custon-pick data-custom-mg" id="data_5">
                                                     <div class="input-daterange input-group" id="datepicker">
-                                                        <span class="input-group-addon">Numero compte de</span>
+                                                        <span class="input-group-addon">Numero compte de :</span>
                                                         <input type="number" class="form-control" name="start" >
-                                                        
-                                                        <span class="input-group-addon">à</span>
+                                                        <span class="input-group-addon">à :</span>
                                                         <input type="number" class="form-control" name="end" >
                                                     </div>
                                                 </div>
                                             </div>
                                     </div>
-                                    
                                 </div>
-                                
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        
         <!-- Liste ecritures de vente -->
         <div class="product-status mg-b-30" >
             <div class="container-fluid">
@@ -92,7 +84,6 @@
                                     <th colspan="2">Solde au 31/12/2018</th>
                                     <th colspan="2">Mouvement 2019</th>
                                     <th colspan="2">Solde au 31/12/2019</th>
-                                    
                                 </tr>
                                 <tr>
                                     <th>Débiteur</th>
@@ -262,11 +253,9 @@
                                     <td>1200</td>
                                     <td>530</td>
                                 </tr>
-                                
-                                
                             </table>
                             <div class="custom-pagination">
-								<ul class="pagination">
+							    <ul class="pagination">
 									<li class="page-item"><a class="page-link" href="#">Previous</a></li>
 									<li class="page-item"><a class="page-link" href="#">1</a></li>
 									<li class="page-item"><a class="page-link" href="#">2</a></li>
