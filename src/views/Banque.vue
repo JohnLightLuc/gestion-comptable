@@ -61,10 +61,10 @@
                                 <div class="product-tab-list tab-pane fade active in" id="description">
                                     <div class="row">
                                             <div class="" style="display: flex;">
-                                                <div class="input-group mg-b-pro-edt" style="width: 4%;">
+                                                <div class="input-group mg-b-pro-edt" style="width: 5%;">
                                                     <input type="text" class="form-control" placeholder="Jour" >
                                                 </div>
-                                                <div class="input-group mg-b-pro-edt" style="width: 7%;">
+                                                <div class="input-group mg-b-pro-edt" style="width: 6%;">
                                                     <input type="text" class="form-control" placeholder="N° pièces">
                                                 </div> 
                                                 <div class="input-group mg-b-pro-edt" style="width: 9%;">

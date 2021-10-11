@@ -9,8 +9,8 @@
                                 <div class="col-lg-1 col-md-0 col-sm-1 col-xs-12">
                                     <div class="menu-switcher-pro">
                                         <button type="button" id="sidebarCollapse" class="btn bar-button-pro header-drl-controller-btn btn-info navbar-btn">
-                                                <i class="icon nalika-menu-task"></i>
-                                            </button>
+                                            <i class="icon nalika-menu-task"></i>
+                                        </button>
                                     </div>
                                 </div>
                                 <div class="col-lg-6 col-md-7 col-sm-6 col-xs-12">
@@ -163,7 +163,7 @@
                                                     </li>
                                                 </ul>
                                             </li>
-                                            <li class="nav-item nav-setting-open"><a href="#" data-toggle="dropdown" role="button" aria-expanded="false" class="nav-link dropdown-toggle"><i class="icon nalika-menu-task"></i></a>
+                                            <li class="nav-item nav-setting-open"><a href="#" role="button" class="nav-link dropdown-toggle" data-toggle="modal" data-target="#exampleModalCenter"><i class="icon nalika-menu-task"></i></a>
                                             </li>
                                         </ul>
                                     </div>
@@ -359,6 +359,62 @@
                 </div>
             </div>
         </div>
+        <!-- Modal -->
+    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header" >
+                <h5 class="modal-title" id="exampleModalCenterTitle">AJOUTER UNE NOUVELLE CATEGORIE</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body" >
+                    <div class="form-group-inner">
+                        <div class="row">
+                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                <label class="login2">Code :</label>
+                            </div>
+                            <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
+                                <input type="text" class="form-control" placeholder="Entrer code">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group-inner">
+                        <div class="row">
+                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                <label class="login2">Nom categorie :</label>
+                            </div>
+                            <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
+                                <input type="text" class="form-control" placeholder="Entrer nom categorie">
+                            </div>
+                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                <label class="login2">Icon :</label>
+                            </div>
+                            <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
+                                <select class="form-control" style="margin-top: 10px; border: 1px solid #ddd" >
+                                <option value="">-- Choisir icon --</option>
+                                <option value="icon nalika-mail icon-wrap"><i class="icon nalika-mail icon-wrap"></i>Icon 1</option>
+                                <option value=""><i class="icon nalika-diamond icon-wrap"></i></option>
+                                <option value=""><i class="icon nalika-pie-chart icon-wrap"></i></option>
+                                <option value=""><i class="icon nalika-pie-chart icon-wrap"></i></option>
+                                <option value=""><i class="icon nalika-bar-chart icon-wrap"></i></option>
+                                <option value=""><i class="icon nalika-table icon-wrap"></i></option>
+                                <option value=""><i class="icon nalika-forms icon-wrap"></i></option>
+                                <option value=""><i class="icon nalika-smartphone-call icon-wrap"></i></option>
+                                <option value=""><i class="icon nalika-new-file icon-wrap"></i></option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+            </div>
+            <div class="modal-footer" >
+                <button type="button" class="btn btn-ctl-bt waves-effect waves-light" data-dismiss="modal">Annuler </button>
+                <button type="button" class="btn btn-primary">Enregistrer</button>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
 </template>
 <script>
@@ -368,7 +424,7 @@ name: 'Header',
 props: ['titre', 'icon'],
 data() {
     return {
-
+    //
     }
 }
 })
@@ -384,7 +440,6 @@ data() {
         background: #1b2a47;
         left: 67%;
     }
-    
     .breadcomb-report ul li .author-log {
         position: absolute;
         z-index: 999;
@@ -406,5 +461,25 @@ data() {
         background: #152036;
         color: #fff;
         outline: none;
+    }
+
+    /** This is modal style */
+    .modal{
+    color: white;
+    border-bottom-color: none;
+    }
+    .form-group-inner label {
+        font-size: 14px;
+        color:white;
+    }
+    .modal-header, .modal-body, .modal-footer {
+    background: #152036;
+    border: none;
+    }
+    .form-group-inner input[type="text"] {
+        color: white;
+    }
+    .modal-body .col-lg-4{
+        text-align: end;
     }
 </style>
