@@ -186,6 +186,7 @@ export default ({
             titre: "Dashboard",
             icon: "icon nalika-home",
         }
+
     }
 })
 </script>

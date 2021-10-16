@@ -24,45 +24,18 @@
                         <li>
                             <router-link class="active" :to="{name: 'Home'}" >
                                 <i class="icon nalika-home icon-wrap"></i>
-                                <span class="mini-click-non">Accueil</span>
+                                <span class="mini-click-non">ACCUEIL</span>
                             </router-link>
                             
                         </li>
-                        <li>
-                            <router-link class="" :to="{name: 'Achat'}" >
-                                <i class="icon nalika-table icon-wrap"></i> 
-                                <span class="mini-click-non"> Achats</span>
+                        <li v-for="type in types">
+                            <router-link class="" :to="{name: type.code, params : {id: type.id}}" >
+                                <i :class="type.icon"></i> 
+                                <span class="mini-click-non"> {{ type.intitule }}</span>
                             </router-link>
                            
                         </li>
-                        <li>
-                            <router-link class="" :to="{name: 'Vente'}" >
-                                <i class="icon nalika-bar-chart icon-wrap"></i> 
-                                <span class="mini-click-non"> Ventes</span>
-                            </router-link>
-                            
-                        </li>
-                        <li>
-                            <router-link class="" :to="{name: 'Paye'}" >
-                                <i class="icon nalika-pie-chart icon-wrap"></i> 
-                                <span class="mini-click-non"> Payement</span>
-                            </router-link>
-                            
-                        </li>
-                        <li>
-                           
-                            <router-link class="" :to="{name: 'Banque'}" >
-                                <i class="icon nalika-diamond icon-wrap"></i> 
-                                <span class="mini-click-non"> Banques</span>
-                            </router-link>
-                            
-                        </li>
-                        <li>
-                            <router-link class="" :to="{name: 'Od'}" >
-                                <i class="icon nalika-forms icon-wrap"></i> 
-                                <span class="mini-click-non"> Opér. diverses</span>
-                            </router-link>
-                        </li>
+                        
                         
                     </ul>
                 </nav>
@@ -70,3 +43,51 @@
         </nav>
     </div>
 </template>
+
+<script>
+import axios from 'axios'
+
+export default ({
+    name: "LeftSideBar",
+    computed: {
+        isInitialize(){
+            return this.$store.state.isInitialize;
+        },
+    },
+    data(){
+        return {
+            types: this.$store.state.types,
+            months: this.$store.state.months,
+            exercices: this.$store.state.exercices
+        }
+    },
+    mounted(){
+        this.gettypes()
+        // let month =  this.getMonth()
+        // let exercice =  this.getExercice()            
+    },
+    methods: {
+       gettypes() {
+           axios.get('/types-comptables')
+           .then((res)=>{
+                console.log(res.data)
+                this.types= res.data.type
+           })
+       },
+       getMonth(){
+           axios.get('/mois-comptables')
+           .then((res)=>{
+                console.log(res.data)
+                return res.data.mois
+           })
+       },
+       getExercice(){
+           axios.get('/exercices-comptables')
+           .then((res)=>{
+                console.log(res.data)
+                return res.data.exercice
+           })
+       },
+    }
+})
+</script>

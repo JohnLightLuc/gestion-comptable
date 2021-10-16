@@ -24,39 +24,36 @@
                                 <div class="product-tab-list tab-pane fade active in" id="description">
                                     <div class="row">
                                             <div class="" >
+                                                 <p v-if="errorMessage" style="color:red;">{{ errorMessage }}</p>
                                                  <div class="input-group mg-b-pro-edt">
                                                     <span class="input-group-addon">Exercice :</span>
-                                                    <select name="select" class="form-control pro-edt-select form-control-primary">
-                                                        <option value="opt1">Année</option>
-                                                        <option value="opt2">2018</option>
-                                                        <option value="opt3">2019</option>
-                                                        <option value="opt4">2020</option>
-                                                        <option value="opt5">2021</option>
-                                                        <option value="opt6">2022</option>
+                                                    <select ref="exercice" name="select" @change="selectDate()" @keyup.enter="getLivre()" class="form-control pro-edt-select form-control-primary">
+                                                        <option value="">Année</option>
+                                                        <option v-for="item in exercices" :key="item.id" >{{ item.annee }}</option>
                                                     </select>
                                                 </div>
                                                 <div class="input-group mg-b-pro-edt">
                                                     <span class="input-group-addon">Date de debut de l'exercice :</span>
-                                                    <input type="date" class="form-control" >
+                                                    <input v-model="date.debut" :disabled="disabled" type="date" @keyup.enter="getLivre()" :min="mindate" :max="maxdate" class="form-control" >
                                                 </div>
                                                 <div class="input-group mg-b-pro-edt">
                                                     <span class="input-group-addon">Date de fin de l'exercice :</span>
-                                                    <input type="date" class="form-control" >
+                                                    <input v-model="date.fin" :disabled="disabled" type="date" @keyup.enter="getLivre()" :min="mindate"  :max="maxdate" class="form-control" >
                                                 </div>
                                                 <div class="input-group mg-b-pro-edt">
                                                     <span class="input-group-addon">Type de Grand Livre :</span>
-                                                    <select name="select" class="form-control pro-edt-select form-control-primary">
-                                                        <option value="opt1">Grand livre générale</option>
-                                                        <option value="opt2">Grand livre auxiliaire</option>
-                                                        <option value="opt2">Grand livre âgée</option>
+                                                    <select v-model="typeLivre" name="select" @keyup.enter="getLivre()" class="form-control pro-edt-select form-control-primary">
+                                                        <option value="[]">Grand livre générale</option>
+                                                        <option value="[1000, 5000]">Grand livre auxiliaire</option>
+                                                        <option value="[5000, 8000]">Grand livre âgée</option>
                                                     </select>
                                                 </div>
                                                 <div class="form-group data-custon-pick data-custom-mg" id="data_5">
                                                     <div class="input-daterange input-group" id="datepicker">
                                                         <span class="input-group-addon">Numero compte de :</span>
-                                                        <input type="number" class="form-control" name="start" >
+                                                        <input v-model="compte.debut" type="number" @keyup.enter="getLivre()" class="form-control" name="start" >
                                                         <span class="input-group-addon">à :</span>
-                                                        <input type="number" class="form-control" name="end" >
+                                                        <input v-model="compte.fin" type="number" @keyup.enter="getLivre()" class="form-control" name="end" >
                                                     </div>
                                                 </div>
                                             </div>
@@ -78,188 +75,35 @@
                                 <h4>Le grand Livre Comptable</h4>
                             </div>
                             <table>
+                                <tbody v-for="item in livre" :key="item.id">
                                 <tr>
-                                    <th colspan="4">Compte 401 Fournisseur </th>
+                                    <th colspan="4">{{ item.numero}} {{ item.intitule }} </th>
                                 </tr>
                                 <tr>
-                                    <th >Date </th>
-                                    <th >Intitulé du compte</th>
-                                    <th >Debit</th>
-                                    <th >Credit</th>
+                                    <td>Date</td>
+                                    <td>Intitulé</td>
+                                    <td> Debit</td>
+                                    <td>Crédit</td>
                                 </tr>
-                                <tr>
-                                    <td>02/05/2015</td>
-                                    <td>Facture achat pommes</td>
-                                    <td> </td>
-                                    <td>105,50</td>
+                                <tr v-for="operation in item.operations" :key="operation">
+                                    <th >{{ operation.jour }}/{{ operation.mois_id }}/ {{ operation.exercice_id }}</th>
+                                    <th >{{ operation.libelle }}</th>
+                                    <th >{{ operation.debit }}</th>
+                                    <th >{{ operation.credit }}</th>
                                 </tr>
                                  <tr>
-                                    <td>31/05/2015</td>
-                                    <td>Reglement par chèque</td>
-                                    <td>105,50 </td>
-                                    <td></td>
-                                </tr>
-                                 <tr>
-                                    <th>31/05/2015</th>
+                                    <th></th>
                                     <th>Total</th>
-                                    <th>105,50 </th>
-                                    <th>105,50</th>
+                                    <th>{{item.somme_debit }} </th>
+                                    <th>{{ item.somme_credit }}</th>
                                 </tr>
                                 <tr>
-                                    <th>31/05/2015</th>
+                                    <th></th>
                                     <th>Solde</th>
                                     <th>0,00 </th>
                                     <th>0,00</th>
                                 </tr>
-
-                                <tr>
-                                    <th colspan="4">Compte 411 Client </th>
-                                </tr>
-                                <tr>
-                                    <td>06/05/2015</td>
-                                    <td>Vente de pommes</td>
-                                    <td> 232,10</td>
-                                    <td></td>
-                                </tr>
-                                 <tr>
-                                    <td>31/05/2015</td>
-                                    <td>Reglement Client</td>
-                                    <td> </td>
-                                    <td>232,10</td>
-                                </tr>
-                                 <tr>
-                                    <th>31/05/2015</th>
-                                    <th>Total</th>
-                                    <th>232,10 </th>
-                                    <th>232,10</th>
-                                </tr>
-                                <tr>
-                                    <th>31/05/2015</th>
-                                    <th>Solde</th>
-                                    <th>0,00 </th>
-                                    <th>0,00</th>
-                                </tr>
-
-                                <tr>
-                                    <th colspan="4">Compte 44566 TVA deductible </th>
-                                </tr>
-                                <tr>
-                                    <td>06/05/2015</td>
-                                    <td>Vente de pommes</td>
-                                    <td>5,50 </td>
-                                    <td></td>
-                                </tr>
-                                 <tr>
-                                    <th>31/05/2015</th>
-                                    <th>Total</th>
-                                    <th>5,50 </th>
-                                    <th>0,00</th>
-                                </tr>
-                                <tr>
-                                    <th>31/05/2015</th>
-                                    <th>Solde</th>
-                                    <th>5,50 </th>
-                                    <th></th>
-                                </tr>
-
-                                <tr>
-                                    <th colspan="4">Compte 44571 TVA collectée </th>
-                                </tr>
-                                <tr>
-                                    <td>06/05/2015</td>
-                                    <td>Vente de pommes</td>
-                                    <td> </td>
-                                    <td>12,10</td>
-                                </tr>
-                                 <tr>
-                                    <th>31/05/2015</th>
-                                    <th>Total</th>
-                                    <th>0,00 </th>
-                                    <th>12,10</th>
-                                </tr>
-                                <tr>
-                                    <th>31/05/2015</th>
-                                    <th>Solde</th>
-                                    <th> </th>
-                                    <th>12,10</th>
-                                </tr>
-
-                                <tr>
-                                    <th colspan="4">Compte 512 Banque </th>
-                                </tr>
-                                <tr>
-                                    <td>31/05/2015</td>
-                                    <td>chèque fournisseur </td>
-                                    <td> </td>
-                                    <td>105,50</td>
-                                </tr>
-                                 <tr>
-                                    <td>31/05/2015</td>
-                                    <td>Reglement Client</td>
-                                    <td> 232,10</td>
-                                    <td>105,50</td>
-                                </tr>
-                                 <tr>
-                                    <th>31/05/2015</th>
-                                    <th>Total</th>
-                                    <th>232,10 </th>
-                                    <th>105,50</th>
-                                </tr>
-                                <tr>
-                                    <th>31/05/2015</th>
-                                    <th>Solde</th>
-                                    <th>126,60 </th>
-                                    <th></th>
-                                </tr>
-
-                                <tr>
-                                    <th colspan="4">Compte 607 Achats de marchandises </th>
-                                </tr>
-                                <tr>
-                                    <td>02/05/2015</td>
-                                    <td>Facture achat pommes</td>
-                                    <td> 100,00</td>
-                                    <td></td>
-                                </tr>
-                                 <tr>
-                                    <th>31/05/2015</th>
-                                    <th>Total</th>
-                                    <th>100,00 </th>
-                                    <th>0,00</th>
-                                </tr>
-                                <tr>
-                                    <th>31/05/2015</th>
-                                    <th>Solde</th>
-                                    <th>100,00 </th>
-                                    <th></th>
-                                </tr>
-
-                                <tr>
-                                    <th colspan="4">Compte 707 Ventes de marchandises </th>
-                                </tr>
-                                <tr>
-                                    <td>06/05/2015</td>
-                                    <td>Vente de pommes</td>
-                                    <td> </td>
-                                    <td>220,00</td>
-                                </tr>
-                                 <tr>
-                                    <th>31/05/2015</th>
-                                    <th>Total</th>
-                                    <th>0,00 </th>
-                                    <th>220,00</th>
-                                </tr>
-                                <tr>
-                                    <th>31/05/2015</th>
-                                    <th>Solde</th>
-                                    <th></th>
-                                    <th>220,00</th>
-                                </tr>
-                                <tr>
-                                    <th colspan="2">TOTAL GRNAD LIVRE</th>
-                                    <th>232,10</th>
-                                    <th>232,10</th>
-                                </tr>
+                                </tbody>
                             </table>
                             <div class="custom-pagination">
                             <ul class="pagination">
@@ -280,6 +124,7 @@
 </div>
 </template>
 <script>
+import axios from 'axios'
 import Header from '../components/Header.vue'
 import LeftSideBar from '../components/LeftSideBar.vue'
 import Footer from '../components/Footer.vue'
@@ -290,6 +135,92 @@ export default ({
     data(){
         return{
             titre: "Liste d'écritures comptables banques",
+            livre: [],
+            exercice: '',
+            exercices:[],
+            disabled: true,
+            errorMessage: '',
+            isError: false,
+            date:{ 
+                'debut': '',
+                'fin':''
+            },
+            mindate: '',
+            maxdate: '',
+            typeLivre: [],
+            compte: {
+                'debut': '',
+                'fin': ''
+            },
+            to : '',
+            from:'',
+            comptes:[]
+        }
+    },
+    mounted(){
+        this.getExercice()
+    },
+    methods: { 
+        selectDate(){
+            this.exercice = this.$refs.exercice.value
+            console.log("this.exercice:")
+            console.log(this.exercice)
+            if(this.exercice != ''){
+                this.disabled = false
+                this.mindate = this.exercice+'-01-01'
+                this.maxdate = this.exercice+'-12-31'
+            }else{
+                console.log("Welcome, wrong choice")
+                this.disabled = true
+                this.mindate = ''
+                this.maxdate = ''
+            }
+        },
+        getExercice(){
+           axios.get('/exercices-comptables')
+           .then((res)=>{
+                console.log(res.data)
+                this.exercices= res.data.exercice
+           })
+       },
+        validationform(){
+            if(this.exercice == ""){
+                this.errorMessage= "Veuillez choisir l'exercice comptable svp !"
+                this.isError = true
+            }else{
+                this.errorMessage = ''
+                if(this.date.debut != ''){
+                    this.to = this.date.debut
+                }else{
+                    this.to = this.mindate
+                }
+                if(this.date.fin != ''){
+                    this.from = this.date.fin
+                }else{
+                    this.from = this.maxdate
+                }
+                
+                this.comptes.push(this.typeLivre)
+                this.comptes.push([this.compte.debut, this.compte.fin])
+                
+            }
+        },
+        getLivre(){
+            this.validationform()
+            
+            if(this.isError == false){
+                axios.post('/grandlivre', {
+                    'to': this.to, 
+                    'from': this.from, 
+                    'comptes':this.comptes
+                })
+                .then((res) => {
+                    console.log(res.data)
+                    this.livre = res.data
+                    this.comptes=[]
+                })
+            }
+
         }
     }
     

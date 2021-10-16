@@ -18,30 +18,34 @@ const routes = [
   },
 
   {
-    path: '/compte-achats',
+    path: '/:id/compte-achats',
     name: 'Achat',
-    component: Achat
+    component: Achat,
+    props:  true
   },
 
   {
-    path: '/compte-ventes',
+    path: '/:id/compte-ventes',
     name: 'Vente',
-    component: Vente
+    component: Vente,
+    props: true
   },
   {
-    path: '/compte-payements',
+    path: '/:id/compte-payements',
     name: 'Paye',
-    component: Paye
+    component: Paye,
+    props: true
   },
   {
-    path: '/compte-banque',
+    path: '/:id/compte-banque',
     name: 'Banque',
     component: Banque
   },
   {
-    path: '/compte-operations-diverses',
+    path: '/:id/compte-operations-diverses',
     name: 'Od',
-    component: Od
+    component: Od,
+    props: true
   },
   {
     path: '/balance',
