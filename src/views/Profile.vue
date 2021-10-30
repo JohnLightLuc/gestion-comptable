@@ -7,7 +7,7 @@
             <div class="row">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <div class="logo-pro">
-                        <a href="index.html"><img class="main-logo" src="img/logo/logo.png" alt="" /></a>
+                        <a href="/"><img class="main-logo" style="width:150px" src="https://lce-ci.com/assets/img/l.png" alt="" /></a>
                     </div>
                 </div>
             </div>
@@ -21,51 +21,49 @@
                     <div class="row">
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                             <div class="review-tab-pro-inner">
-                                
                                 <div class="product-tab-list tab-pane fade active in" id="description">
+                                    <div>
+                                        <p v-if="hasError" style="color:red"> {{errorMessage}}</p>
+                                        <div v-if="send">
+                                            <p v-if="status" class="text-success">{{message}}</p>
+                                            <p v-else class="text-danger">{{message}}</p>
+                                        </div>
+                                    </div>
                                     <div class="row">
                                         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                             <div class="review-content-section">
                                                 <div class="input-group mg-b-pro-edt">
                                                     <span class="input-group-addon"><i class="icon nalika-user" aria-hidden="true"></i></span>
-                                                    <input type="text" class="form-control" placeholder="Nom">
-                                                </div>
-                                                <div class="input-group mg-b-pro-edt">
-                                                    <span class="input-group-addon"><i class="icon nalika-mail nalika-chat-pro" aria-hidden="true"></i></span>
-                                                    <input type="text" class="form-control" placeholder="Email">
+                                                    <input type="text" v-model="data.name" class="form-control" placeholder="Nom">
                                                 </div>
                                                 <div class="input-group mg-b-pro-edt">
                                                     <span class="input-group-addon"><i class="icon nalika-unlocked author-log-ic" aria-hidden="true"></i></span>
-                                                    <input type="password" class="form-control" placeholder="Mot de passe">
+                                                    <input v-model="data.old_password" type="password" class="form-control" placeholder="Ancien mot de passe">
                                                 </div>
-                                               
+                                                <div class="input-group mg-b-pro-edt">
+                                                    <span class="input-group-addon"><i class="icon nalika-unlocked author-log-ic" aria-hidden="true"></i></span>
+                                                    <input v-model="data.password_confirmation" type="password" class="form-control" placeholder="Confirmer mot de passe">
+                                                </div>
                                             </div>
                                         </div>
                                         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                             <div class="review-content-section">
                                                 <div class="input-group mg-b-pro-edt">
-                                                    <span class="input-group-addon"><i class="icon nalika-user" aria-hidden="true"></i></span>
-                                                    <input type="text" class="form-control" placeholder="Prenom (s)">
-                                                </div>
-                                                <div class="input-group mg-b-pro-edt">
-                                                    <span class="input-group-addon"><i class="icon nalika-favorites-button" aria-hidden="true"></i></span>
-                                                    <input type="file" class="form-control" placeholder="Photo">
+                                                    <span class="input-group-addon"><i class="icon nalika-mail nalika-chat-pro" aria-hidden="true"></i></span>
+                                                    <input type="text" v-model="data.email" class="form-control" placeholder="Email">
                                                 </div>
                                                 <div class="input-group mg-b-pro-edt">
                                                     <span class="input-group-addon"><i class="icon nalika-unlocked author-log-ic" aria-hidden="true"></i></span>
-                                                    <input type="password" class="form-control" placeholder="Confirmer mot de passe">
+                                                    <input v-model="data.password" type="password" class="form-control" placeholder="Nouveau mot de passe">
                                                 </div>
-                                                
                                             </div>
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                             <div class="text-center custom-pro-edt-ds">
-                                                <button type="button" class="btn btn-ctl-bt waves-effect waves-light m-r-10">Save
-                                                    </button>
-                                                <button type="button" class="btn btn-ctl-bt waves-effect waves-light">Discard
-                                                    </button>
+                                                <button type="button" @click="retour" class="btn btn-ctl-bt waves-effect waves-light m-r-10">Retour</button>
+                                                <button type="button" @click="getModify()" class="btn btn-ctl-bt waves-effect waves-light">Modifier</button>
                                             </div>
                                         </div>
                                     </div>
@@ -299,6 +297,7 @@
 </template>
 
 <script>
+import axios from 'axios'
 import Header from '../components/Header.vue'
 import LeftSideBar from '../components/LeftSideBar.vue'
 import Footer from '../components/Footer.vue'
@@ -310,8 +309,64 @@ export default ({
         return{
             titre: "Mon profile",
             icon: "icon nalika-user",
+            errorMessage: '',
+            hasError: false,
+            status:false,
+            send:false,
+            prenom:'',
+            data: { 
+                name:localStorage.getItem("name"),
+                email: localStorage.getItem("email"),
+                old_password:'',
+                password: '',
+                password_confirmation:''
+            }
+        }
+    },
+    methods:{
+        getModify(){
+            this.send == false
+            if(this.data.name == ""){
+                this.errorMessage="Veuillez remplir tous les champs obligatoires svp!"
+                this.hasError = true
+            }
+            if(this.data.email == ""){
+                this.errorMessage="Veuillez remplir tous les champs obligatoires svp!"
+                this.hasError = true
+            }
+            if(this.data.password != "" && this.datapassword_confirmation != ""){
+                if(this.data.password != this.datapassword_confirmation){
+                    this.errorMessage="Le nouveau mot de passe et la confirmation sont differents !"
+                    this.hasError = true
+                }
+            }
+            if(this.hasError == false){
+                this.hasError = false
+                axios.post('/auth/modifierUser', this.data)
+                .then((res)=>{
+                    this.send=true
+                    localStorage.setItem("name", this.data.name)
+                    localStorage.setItem("email", this.data.email)
+                    this.status = res.data.state
+                    if (this.status == true){
+                        this.message = res.data.message
+                    }else{
+                        this.send=true
+                        this.message = res.data.message
+                    }
+                })
+                .catch((err)=>{
+                    this.send=true
+                    this.message = err.message
+                })
+            }
+        },
+        retour(){
+            this.$router.go(-1)
         }
     }
+    
+        
 })
 </script>
 

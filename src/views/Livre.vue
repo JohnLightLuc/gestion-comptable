@@ -7,7 +7,7 @@
             <div class="row">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <div class="logo-pro">
-                        <a href="index.html"><img class="main-logo" src="img/logo/logo.png" alt="" /></a>
+                        <a href="/"><img class="main-logo" style="width:150px" src="https://lce-ci.com/assets/img/l.png" alt="" /></a>
                     </div>
                 </div>
             </div>
@@ -56,6 +56,9 @@
                                                         <input v-model="compte.fin" type="number" @keyup.enter="getLivre()" class="form-control" name="end" >
                                                     </div>
                                                 </div>
+                                                <div style="text-align:end;">
+                                                <button type="button" style="margin-top:20px" @click="getLivre()" class="btn btn-primary">Afficher le grand livre</button>
+                                                </div>
                                             </div>
                                     </div>
                                 </div>
@@ -74,7 +77,11 @@
                             <div style="text-align:left;">
                                 <h4>Le grand Livre Comptable</h4>
                             </div>
-                            <table>
+                            <div style="text-align:right;" v-if="affiche == true">
+                                <button style="margin:5px" type="button" class="btn btn-success" @click="exportReportToExcel()" >Download Excel</button>
+                                <button style="margin:5px" type="button" class="btn btn-danger" @click="printContentPDF()" >Download PDF</button>
+                            </div>
+                            <table id="livre">
                                 <tbody v-for="item in livre" :key="item.id">
                                 <tr>
                                     <th colspan="4">{{ item.numero}} {{ item.intitule }} </th>
@@ -86,7 +93,7 @@
                                     <td>Crédit</td>
                                 </tr>
                                 <tr v-for="operation in item.operations" :key="operation">
-                                    <th >{{ operation.jour }}/{{ operation.mois_id }}/ {{ operation.exercice_id }}</th>
+                                    <th >{{ operation.jour }}/{{ operation.mois.numero }}/ {{ operation.year.annee }}</th>
                                     <th >{{ operation.libelle }}</th>
                                     <th >{{ operation.debit }}</th>
                                     <th >{{ operation.credit }}</th>
@@ -100,20 +107,13 @@
                                 <tr>
                                     <th></th>
                                     <th>Solde</th>
-                                    <th>0,00 </th>
-                                    <th>0,00</th>
+                                    <th v-if="item.somme_debit > item.somme_credit">{{item.balance}} </th>
+                                    <th v-else>0,00</th>
+                                    <th v-if="item.somme_debit < item.somme_credit">{{Number(item.balance)*(-1)}} </th>
+                                    <th v-else>0,00</th>
                                 </tr>
                                 </tbody>
                             </table>
-                            <div class="custom-pagination">
-                            <ul class="pagination">
-                                <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-                                <li class="page-item"><a class="page-link" href="#">1</a></li>
-                                <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                <li class="page-item"><a class="page-link" href="#">Next</a></li>
-                            </ul>
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -134,7 +134,8 @@ export default ({
     components: { Header, LeftSideBar, Footer },
     data(){
         return{
-            titre: "Liste d'écritures comptables banques",
+            titre: "Gestion du livre comptable",
+            affiche: false,
             livre: [],
             exercice: '',
             exercices:[],
@@ -161,16 +162,75 @@ export default ({
         this.getExercice()
     },
     methods: { 
+        exportReportToExcel() {
+            let table = document.getElementById("livre"); // you can use document.getElementById('tableId') as well by providing id to the table tag
+            TableToExcel.convert(table, { // html code may contain multiple tables so here we are refering to 1st table tag
+                name: `grand-livre.xlsx`, // fileName you could use any name
+                sheet: {
+                name: 'exercice-de-'+ this.mindate+'-a-'+this.maxdate // sheetName
+                }
+            });
+        },
+        printContentPDF() {
+            var restorepage = document.body.outerHTML;
+            var printcontent = document.getElementById("livre").outerHTML;
+            document.body.outerHTML = printcontent;
+            window.print();
+            document.body.outerHTML = restorepage;
+        },
+        exportDataToCSV(){
+            /* Get the HTML data using Element by Id */
+            var table = document.getElementById("livre");
+            let column1, column2, column3, column4, column5, column6
+            /* Declaring array variable */
+            var rows =[];
+            //iterate through rows of table
+            for(var i=2,row; row = table.rows[i];i++){
+                //rows would be accessed using the "row" variable assigned in the for loop
+                //Get each cell value/column from the row
+                column1 = row.cells[0].innerText;
+                column2 = row.cells[1].innerText;
+                column3 = row.cells[2].innerText;
+                column4 = row.cells[3].innerText;
+                column5 = row.cells[4].innerText;
+                column6 = row.cells[5].innerText;
+        
+            /* add a new records in the array */
+                rows.push(
+                    [
+                        column1,
+                        column2,
+                        column3,
+                        column4,
+                        column5,
+                        column6
+                    ]
+                );
+        
+                }
+                let csvContent = "data:text/csv;charset=utf-8,";
+                /* add the column delimiter as comma(,) and each row splitted by new line character (\n) */
+                rows.forEach(function(rowArray){
+                    row = rowArray.join(",");
+                    csvContent += row + "\r\n";
+                });
+        
+                /* create a hidden <a> DOM node and set its download attribute */
+                var encodedUri = encodeURI(csvContent);
+                var link = document.createElement("a");
+                link.setAttribute("href", encodedUri);
+                link.setAttribute("download", "Stock_Price_Report.csv");
+                document.body.appendChild(link);
+                /* download the data file named "Stock_Price_Report.csv" */
+                link.click();
+        },
         selectDate(){
             this.exercice = this.$refs.exercice.value
-            console.log("this.exercice:")
-            console.log(this.exercice)
             if(this.exercice != ''){
                 this.disabled = false
                 this.mindate = this.exercice+'-01-01'
                 this.maxdate = this.exercice+'-12-31'
             }else{
-                console.log("Welcome, wrong choice")
                 this.disabled = true
                 this.mindate = ''
                 this.maxdate = ''
@@ -179,7 +239,6 @@ export default ({
         getExercice(){
            axios.get('/exercices-comptables')
            .then((res)=>{
-                console.log(res.data)
                 this.exercices= res.data.exercice
            })
        },
@@ -215,9 +274,9 @@ export default ({
                     'comptes':this.comptes
                 })
                 .then((res) => {
-                    console.log(res.data)
                     this.livre = res.data
                     this.comptes=[]
+                    this.affiche = true
                 })
             }
 
@@ -227,6 +286,9 @@ export default ({
 })
 </script>
 <style >
+    .review-tab-pro-inner{
+        overflow: scroll,
+    }
     .mg-b-pro-edt{
         border-right: 1px solid black;
     }

@@ -1,4 +1,7 @@
+
+
 <template>
+
 <div>
     <LeftSideBar/>
      <!-- Start Welcome area -->
@@ -7,12 +10,12 @@
             <div class="row">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <div class="logo-pro">
-                        <a href="index.html"><img class="main-logo" src="img/logo/logo.png" alt="" /></a>
+                        <a href="/"><img class="main-logo" style="width:150px" src="https://lce-ci.com/assets/img/l.png" alt="" /></a>
                     </div>
                 </div>
             </div>
         </div>
-        <Header :titre="titre" :icon="type.icon" >
+        <Header :titre="'Liste écritures comptables de '+this.type.intitule" :icon="type.icon" >
             <div class="row">
                 <div class="col-lg-5 col-md-5 col-sm-5 col-xs-12">
                     <div class="form-select-list">
@@ -39,39 +42,43 @@
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                            <div v-if="alert.send == true">
+                                <p v-if="alert.status == true" class="text-success">{{ alert.message }}</p>
+                                <p v-else class="text-danger">{{ alert.message }}</p>
+                            </div>
                             <div class="review-tab-pro-inner">
                                 <div class="product-tab-list tab-pane fade active in" id="description">
                                     <div class="row">
-                                            <div class="" style="display: flex;">
+                                            <div class="" style="display: flex;min-width:960px">
                                                 <div class="input-group mg-b-pro-edt" style="width: 5%;">
-                                                    <input v-model="newecriture.jour" @keyup.enter="saveEcriture" type="text" class="form-control" required placeholder="Jour" >
+                                                    <input v-model="newecriture.jour" @keyup.enter="saveEcriture" type="text" class="form-control" required placeholder="Jour" title="Jour" >
                                                 </div>
                                                 <div class="input-group mg-b-pro-edt" style="width: 6%;">
-                                                    <input  type="text" class="form-control" disabled placeholder="N° pièces">
+                                                    <input  type="text" class="form-control" disabled placeholder="N° pièces" title="Numero de piece">
                                                 </div>
                                                 <div class="input-group mg-b-pro-edt" style="width: 7%;">
-                                                    <input v-model="newecriture.numero_facture" @keyup.enter="saveEcriture" type="text" class="form-control"  placeholder="N° facture" >
+                                                    <input v-model="newecriture.numero_facture" @keyup.enter="saveEcriture" type="text" class="form-control"  placeholder="N° facture" title="Numero de facture">
                                                 </div>
                                                 <div class="input-group mg-b-pro-edt" style="width: 7%;">
-                                                    <input v-model="newecriture.reference" type="text" @keyup.enter="saveEcriture" class="form-control" placeholder="Référence" >
+                                                    <input v-model="newecriture.reference" type="text" @keyup.enter="saveEcriture" class="form-control" placeholder="Référence" title="Référence" >
                                                 </div>
                                                 <div class="input-group mg-b-pro-edt" style="width: 7%;">
-                                                    <input v-model="newecriture.compte_courant" @focusout="verify_compte(newecriture.compte_courant)" @keyup.enter="saveEcriture" type="text" class="form-control" required placeholder="N° compte courant">
+                                                    <input v-model="newecriture.compte_courant" @focusout="verify_compte(newecriture.compte_courant)" @keyup.enter="saveEcriture" type="text" class="form-control" required placeholder="N° compte courant" title="Numero de compte courant">
                                                 </div>
                                                 <div class="input-group mg-b-pro-edt" style="width: 7%;">
-                                                    <input v-model="newecriture.compte_tiers" @focusout="verify_compte(newecriture.compte_tiers)" @keyup.enter="saveEcriture" type="text" class="form-control" required placeholder="N° compte tiers">
+                                                    <input v-model="newecriture.compte_tiers" @focusout="verify_compte(newecriture.compte_tiers)" @keyup.enter="saveEcriture" type="text" class="form-control" required placeholder="N° compte tiers" title="Numero de compte tiers">
                                                 </div>
                                                 <div class="input-group mg-b-pro-edt" style="width: 32%;">
-                                                    <input v-model="newecriture.libelle" type="text" class="form-control" required @keyup.enter="saveEcriture" placeholder="Libellé d'écriture" >
+                                                    <input v-model="newecriture.libelle" type="text" class="form-control" required @keyup.enter="saveEcriture" placeholder="Libellé d'écriture" title="Libelle d'opération">
                                                 </div>
                                                 <div class="input-group mg-b-pro-edt" style="width: 11%;">
-                                                    <input v-model="newecriture.debit" type="number" class="form-control" required placeholder="Debit" @keyup.enter="saveEcriture">
+                                                    <input v-model="newecriture.debit" type="number" class="form-control" required placeholder="Debit" @keyup.enter="saveEcriture" title="Montant débit">
                                                 </div>
                                                 <div class="input-group mg-b-pro-edt" style="width: 11%;">
-                                                    <input v-model="newecriture.credit" type="number" class="form-control" required placeholder="Credit" @keyup.enter="saveEcriture">
+                                                    <input v-model="newecriture.credit" type="number" class="form-control" required placeholder="Credit" @keyup.enter="saveEcriture" title="Montant crédit">
                                                 </div>
                                                 <div class="input-group mg-b-pro-edt" style="width: 7%;">
-                                                    <input v-model="newecriture.date_echeance" type="datetime-local" class="form-control" required placeholder="Date échance" @keyup.enter="saveEcriture" >
+                                                    <input v-model="newecriture.date_echeance" type="datetime-local" class="form-control" required placeholder="Date échance" @keyup.enter="saveEcriture" title="Date d'échéance de la facture">
                                                 </div>
                                             </div>
                                     </div>
@@ -91,18 +98,20 @@
                             <div style="text-align:left;">
                                 <h4>Ecritures comptables</h4>
                             </div>
-                            <table>
+                            <table id="example">
                                 <tr>
                                     <th style="width: 5%;">Jour</th>
-                                    <th style="width: 6%;">N° pièces</th>
-                                    <th style="width: 7%;">N° Facture</th>
-                                    <th style="width: 7%;">Références</th>
-                                    <th style="width: 7;">N° Compte courant</th>
-                                    <th style="width: 7%;">N° Compte tiers</th>
-                                    <th style="width: 32%;">Libellé écriture</th>
-                                    <th style="width: 11%;">Débit</th>
-                                    <th style="width: 11%;">Crédit</th>
+                                    <th style="width: 5%;">N° pièces</th>
+                                    <th style="width: 6%;">N° Facture</th>
+                                    <th style="width: 6%;">Références</th>
+                                    <th style="width: 6;">N° Compte courant</th>
+                                    <th style="width: 6%;">N° Compte tiers</th>
+                                    <th style="width: 30%;">Libellé écriture</th>
+                                    <th style="width: 10%;">Débit</th>
+                                    <th style="width: 10%;">Crédit</th>
                                     <th style="width: 7%;">Date d'échéance</th>
+                                    <th style="width: 4%;">Piece</th>
+                                    <th style="width: 5%;">Editer</th>
                                 </tr>
                                 <tr v-for="ecriture in new_ecritures" :key="ecriture">
                                     <!-- Jour -->
@@ -125,20 +134,33 @@
                                     <td>{{ ecriture.credit }}</td>
                                     <!-- Dat échéance -->
                                     <td>{{ ecriture.date_echeance }}</td>
+                                    <!-- Piece -->
+                                    <td>
+                                        <button type="button" style="cursor: not-allowed" class="btn btn-seconary" >
+                                            Reçu
+                                        </button>
+                                    </td>
+                                    <td>
+                                        <button type="button" style="cursor: not-allowed" class="btn btn-seconary" >
+                                            Editer
+                                        </button>
+                                    </td>
                                 </tr>
-                                <tr v-for="ecriture in ecritures" :key="ecriture.id">
+                                <tr v-for="ecriture in ecritures" :key="ecriture.id" v-if="ecritures.length > 0">
                                     <!-- Jour -->
                                     <td>{{ ecriture.jour }}</td>
                                     <!-- N° piece -->
                                     <td>{{ ecriture.numero_piece }}</td>
                                     <!-- N°  -->
-                                    <td>{{ ecriture.numero_piece }}</td>
+                                    <td>{{ ecriture.numero_facture }}</td>
                                      <!--Reference -->
                                     <td>{{ ecriture.reference }}</td>
                                     <!--Compte courant -->
-                                    <td>{{ ecriture.compte_courant }}</td>
+                                    <td v-if="ecriture.plan_comptable != null ">{{ ecriture.plan_comptable.numero }}</td>
+                                    <td v-else></td>
                                     <!--Compte tiece -->
-                                    <td>{{ ecriture.compte_tiers }}</td>
+                                    <td v-if=" ecriture.compte_tiers_plan != null">{{ ecriture.compte_tiers_plan.numero }}</td>
+                                    <td v-else></td>
                                     <!--Libelle -->
                                     <td>{{ ecriture.libelle }}</td>
                                     <!--Debit -->
@@ -147,9 +169,26 @@
                                     <td>{{ ecriture.credit }}</td>
                                     <!--date_echeance -->
                                     <td>{{ ecriture.date_echeance }}</td>
+                                    <!-- RECU-->
+                                    <td>
+                                        <button type="button" @click="setId(ecriture.id, ecriture.piece.nom)" class="btn btn-success" data-toggle="modal" :data-target="'#abccdj'+ecriture.id.toString()">
+                                            Reçu
+                                        </button>
+                                    </td>
+                                    <td>
+                                        <button type="button" class="btn btn-primary" v-if="ecriture.compte_courant != null" @click="editer(ecriture.jour,ecriture.numero_facture,ecriture.reference,ecriture.plan_comptable.numero,'',ecriture.libelle,ecriture.debit,ecriture.credit,ecriture.id)" >
+                                            Editer
+                                        </button>
+                                        <button type="button" class="btn btn-primary" v-else @click="editer(ecriture.jour,ecriture.numero_facture,ecriture.reference,'',ecriture.compte_tiers_plan.numero,ecriture.libelle,ecriture.debit,ecriture.credit,ecriture.id)" >
+                                            Editer
+                                        </button>
+                                    </td>
+                                </tr>
+                                <tr v-else>
+                                <td colspan="12" style="background: rgb(241 93 34); text-align:center;"> Pas d'anciennes écritures comptables disponibles pour le moment. </td>
                                 </tr>
                             </table>
-                            <div class="custom-pagination" style="text-align:right">
+                            <!-- <div class="custom-pagination" style="text-align:right">
                                 <ul class="pagination">
                                 <li class="page-item"><a class="page-link" href="#">Previous</a></li>
                                 <li class="page-item"><a class="page-link" href="#">1</a></li>
@@ -157,7 +196,7 @@
                                 <li class="page-item"><a class="page-link" href="#">3</a></li>
                                 <li class="page-item"><a class="page-link" href="#">Next</a></li>
                             </ul>
-                            </div>
+                            </div> -->
                         </div>
                     </div>
                 </div>
@@ -217,7 +256,7 @@
                             <label class="login2">Numero de compte :</label>
                         </div>
                         <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
-                            <input v-model="newPlan.numero" type="number"  class="form-control" placeholder="Entrer umero de compte" >
+                            <input v-model="newPlan.numero" type="text"  class="form-control" placeholder="Entrer umero de compte" >
                             <small v-if="errorPlan.numero" style="color:red;text-align: left"> {{errorPlan.numero}}</small>
                         </div>
                     </div>
@@ -258,6 +297,26 @@
           </div>
         </div>
     </div>
+
+    <!-- VIEWS JOINTE-->
+    <!-- Modal -->
+    <div class="modal fade" :id="selectId" tabindex="-1" role="dialog" :aria-labelledby="selectId+'Title'" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLongTitle">Pièce-jointe </h5>
+        </div>
+        <div class="modal-body">
+            <div>
+                <img v-if="piece != '' " :src="baseUrl+'/'+piece" alt="Piece jointe" />
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button  type="button" class="btn btn-ctl-bt waves-effect waves-light" data-dismiss="modal">Fermer </button>
+        </div>
+        </div>
+    </div>
+    </div>
 </div>
 </template>
 <script>
@@ -266,15 +325,25 @@ import LeftSideBar from '../components/LeftSideBar.vue'
 import Footer from '../components/Footer.vue'
 import axios from 'axios'
 
+ var table = document.getElementById('#example')
+ //table.DataTable({ dom: 'Blfrtip',});
+
+
 export default ({
-    name: 'Od',
+    name: 'Operations',
     components: { Header, LeftSideBar, Footer },
     data(){
         return{
-            titre: "Liste d'écritures comptables des opérations diverses",
             type: {},
+            baseUrl: this.$store.state.baseUrl,
+            alert: {
+                send: false,
+                status: false,
+                message: ''
+            },
             months: [],
             exercices: [],
+            selectId: "",
             classes: [],
             newPlan: { 
                 'classe_id': '',
@@ -293,7 +362,6 @@ export default ({
             type_id: parseInt(this.$route.params.id),
             exercice_id :'',
             mois_id: '',
-            piece : '',
             newecriture : {
                 'jour': '',
                 'numero_facture': '',
@@ -309,6 +377,12 @@ export default ({
             new_ecritures: [],
             errors: false,
             errorsEcritures : [],
+            piece : '',
+            newpiece:'',
+            edit :{
+                toEdit: false,
+                ecritureId: ''
+            }
         }
     },
     mounted(){
@@ -322,7 +396,12 @@ export default ({
         this.getClasses()
     },
     methods: {
-        getEcriture(){
+        exportToExcel(){
+            var htmltable= document.getElementById('example');
+            var html = htmltable.outerHTML;
+            window.open('data:application/vnd.ms-excel,' + encodeURIComponent(html));
+        },
+       getEcriture(){
             axios.post('/ecritures-comptables-filtres',
             {
                 'exercice_id': this.exercice_id,
@@ -330,38 +409,30 @@ export default ({
                 'mois_id': this.mois_id,
             })
             .then((res)=>{
-                console.log(res.data)
                 this.ecritures = res.data.ecritures
             })
-            .catch((err)=>{
-                console.log(err)
-            })
-        },
-        gettypes() {
+       },
+       gettypes() {
            axios.get('/types-comptables/'+ this.$route.params.id)
            .then((res)=>{
-                console.log(res.data)
                 this.type= res.data.type
            })
        },
        getMonth(){
            axios.get('/mois-comptables')
            .then((res)=>{
-                console.log(res.data)
                 this.months= res.data.mois
            })
        },
        getExercice(){
            axios.get('/exercices-comptables')
            .then((res)=>{
-                console.log(res.data)
                 this.exercices= res.data.exercice
            })
        },
        getClasses(){
            axios.get('/classes-comptables')
            .then((res)=>{
-                console.log(res.data)
                 this.classes= res.data.classe
            })
        },
@@ -379,9 +450,8 @@ export default ({
                 axios.post('/verify-compte', {'numero': numero})
                 .then((res)=>{
                     if(res.data.exist){
-                        console.log('Compte existe')
+                        this.newecriture.libelle = res.data.compte.intitule
                     }else{
-                        console.log("ce compte n'existe")
                         document.getElementById('plan-comptable').click();
                     }
                 }) 
@@ -412,50 +482,102 @@ export default ({
                     'intitule': this.newPlan.intitule,
                 })
                 .then((res)=>{
-                    console.log(res.data)
-                    console.log("Plan comptable ajouter avec succès.")
+                    this.newecriture.libelle = this.newPlan.intitule
+                    this.alert.send = true
+                    this.alert.status = true
+                    this.alert.message = "Compte ajouté au plan comptable avec succès."
+                    this.closeMessage()
                 })
-                .catch((err)=>{
-                    console.log(err.message)
-                })   
            }
            
        },
        saveEcriture(){
            this.validattionEcriture()
-
+        
            if (this.errors == false){
-               console.log('execute ecriture')
-                console.log(this.newecriture)
-                let debit = 0
-                let credit = 0
-                let data = Object.assign({}, this.newecriture);
-                this.new_ecritures.push(data)
-                for (let i =0; i < this.new_ecritures.length; i++){
-                    console.log(this.new_ecritures[i])
-                    debit += parseInt(this.new_ecritures[i]['debit'])
-                    credit += parseInt(this.new_ecritures[i]['credit'])
-                }
-                console.log(debit)
-                console.log(credit)
-                if(debit !== 0 && credit !== 0){
-                        if(debit === credit){
-                            if(this.piece != ''){
-                                this.getSaveEcritures()
-                            }else{
-                                // Active Popup to choose the Piece
-                                this.activePiecePopup()
-                            }
-                            
-                        }else{
-                            console.log("En cours...")
+               if(this.edit.toEdit == false){
+                    let debit = 0
+                    let credit = 0
+                    let data = Object.assign({}, this.newecriture);
+                    this.new_ecritures.push(data)
+                    for (let i =0; i < this.new_ecritures.length; i++){
+                        if(typeof(this.new_ecritures[i]['debit']) != 'number'){
+                            this.new_ecritures[i]['debit'] = 0
                         }
-                }
-                this.newecriture.compte_courant = '',
-                this.newecriture.compte_tiers = '',
-                this.newecriture.libelle = '',
-                this.newecriture.debit =0,
-                this.newecriture.credit=0
+                        if(typeof(this.new_ecritures[i]['debit']) != 'number'){
+                            this.new_ecritures[i]['debit'] = 0
+                        }
+                        debit += parseInt(this.new_ecritures[i]['debit'])
+                        credit += parseInt(this.new_ecritures[i]['credit'])
+                    }
+                    if(debit !== 0 && credit !== 0){
+                            if(debit === credit){
+                                if(this.newpiece != ''){
+                                    this.getSaveEcritures()
+                                }else{
+                                    // Active Popup to choose the Piece
+                                    this.activePiecePopup()
+                                }
+                                
+                            }else{
+                                this.alert.send = true
+                                this.alert.status = true
+                                this.alert.message = "Ecriture comptable ajouté mais pas encore enregistrée. La saisie de l'opération en cours. "
+                                this.closeMessage()
+                            }
+                    }else{
+                        this.alert.send = true
+                        this.alert.status = true
+                        this.alert.message = "Ecriture comptable ajouté mais pas encore enregistrée. La saisie de l'opération en cours. "
+                        this.closeMessage()
+                    }
+                    this.newecriture.compte_courant = '',
+                    this.newecriture.compte_tiers = '',
+                    this.newecriture.libelle = '',
+                    this.newecriture.debit =0,
+                    this.newecriture.credit=0
+               }else{
+                   axios.post('/ecritures-comptables/'+this.edit.ecritureId,{
+                       'jour': this.newecriture.jour,
+                       'numero_facture': this.newecriture.numero_facture,
+                       'reference': this.newecriture.reference,
+                       'compte_courant': this.newecriture.compte_courant,
+                       'compte_tiers': this.newecriture.compte_tiers,
+                       'libelle': this.newecriture.libelle,
+                       'debit': this.newecriture.debit,
+                       'credit': this.newecriture.credit,
+                       'date_echeance': this.newecriture.date_echeance,
+                   })
+                   .then((res)=>{
+                       this.alert.send = true
+                       this.alert.status = true
+                       this.alert.message = "Ecriture comptable modifiée avec succès."
+                       this.closeMessage()
+                       this.getEcriture()
+                       this.edit ={
+                            toEdit: false,
+                            ecritureId: ''
+                        }
+                       this.newecriture = {
+                            'jour': '',
+                            'numero_facture': '',
+                            'reference': '',
+                            'compte_courant': '',
+                            'compte_tiers': '',
+                            'libelle': '',
+                            'debit': 0,
+                            'credit': 0,
+                            'date_echeance': ''
+                        }
+                   })
+                   .catch((err)=>{
+                       this.alert.send = true
+                       this.alert.status = false
+                       this.alert.message = err.message
+                       this.closeMessage()
+                   })
+               }
+                
            }else{
                let message ='Veuillez obligatoirement remplir les champs suivants:\n'
                let messagelength= this.errorsEcritures.length
@@ -467,24 +589,30 @@ export default ({
                        this.errorsEcritures = []
                    }
                }
+               this.errors = false
                
            }
            
        },
        getSaveEcritures(){
             let data =JSON.stringify(this.new_ecritures);
-            console.log(data)
             let formdata = new FormData()
             formdata.append('type_id', this.type_id)
             formdata.append('exercice_id', this.exercice_id)
             formdata.append('mois_id', this.mois_id)
             formdata.append('data', data)
-            formdata.append('piece', this.piece, this.piece.name)
+            formdata.append('piece', this.newpiece, this.newpiece.name)
 
             //Enregistrement des ecritures comptables
             axios.post('/ecritures-comptables', formdata)
             .then((res)=>{
-                console.log(res.data)
+                this.$refs.piece.value=null
+                this.newpiece= ''
+                // Alert Part
+                this.alert.send = true
+                this.alert.status = true
+                this.alert.message = "Ecritures comptables enregistrées avec success."
+                this.closeMessage()
                 this.getEcriture()
                 this.new_ecritures = []
                 this.newecriture = {
@@ -500,7 +628,10 @@ export default ({
                 }
             })
             .catch((err)=>{
-                console.log(err.message)
+                this.alert.send = true
+                this.alert.status = false
+                this.alert.message = err.message
+                this.closeMessage()
             })
        },
        activePiecePopup(){
@@ -508,12 +639,14 @@ export default ({
        },
        savePiece(){
             try {
-                this.piece = this.$refs.piece.files[0]
-                console.log('Piece recuperée')
-                console.log(this.piece)
-                this.getSaveEcritures()
+                if(this.$refs.piece.value != null && this.$refs.piece.value != ''){
+                    this.newpiece = this.$refs.piece.files[0]
+                    this.getSaveEcritures()
+                }else{
+                    document.getElementById('piece-jointe').click();
+                }
+                
             } catch (error) {
-                console.error(error);
                 this.activePiecePopup()
             }
        },
@@ -568,12 +701,68 @@ export default ({
               this.errorPlan.intitule = "L'intitulé du compte est obligatoire !"
               this.errorPlan.asError = true
           }
+       },
+       setId(id, selectedPiece){
+           this.selectId ='abccdj'+ id.toString()
+           this.piece = selectedPiece
+       },
+       editer(jour, numero_facture, reference, compte_courant, compte_tiers, libelle,debit, credit, itemId){
+           if(this.edit.ecritureId != '' && this.edit.ecritureId == itemId){
+                this.edit= {
+                    toEdit: false,
+                    ecritureId: ''
+                }
+                this.newecriture = {
+                    'jour': '',
+                    'numero_facture': '',
+                    'reference': '',
+                    'compte_courant': '',
+                    'compte_tiers': '',
+                    'libelle': '',
+                    'debit': 0,
+                    'credit': 0,
+                    'date_echeance': ''
+                }
+           }else{
+                this.newecriture.jour = jour
+                this.newecriture.numero_facture = numero_facture
+                this.newecriture.reference = reference
+                this.newecriture.compte_courant = compte_courant
+                this.newecriture.compte_tiers = compte_tiers
+                this.newecriture.libelle = libelle
+                this.newecriture.debit = credit
+                this.newecriture.credit = debit
+
+                this.edit= {
+                    toEdit: true,
+                    ecritureId: itemId
+                }
+           }
+            
+       },
+       closeMessage(){
+           setTimeout(()=>{
+               this.alert= {
+                send: false,
+                status: false,
+                message: ''
+            }
+           },10000)
        }
     }
     
 })
 </script>
 <style scoped>
+    .review-tab-pro-inner{
+        overflow-x: auto,
+    }
+    .review-tab-pro-inner{
+        overflow: auto;
+    }
+    .product-status-wrap{
+        overflow-x: auto!important;
+    }
     .mg-b-pro-edt{
         border-right: 1px solid black;
     }

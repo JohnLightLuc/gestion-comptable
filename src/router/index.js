@@ -1,66 +1,86 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import Index from '../views/Index.vue'
-import Achat from '../views/Achat.vue'
-import Vente from '../views/Vente.vue'
-import Paye from '../views/Paye.vue'
-import Od from '../views/Od.vue'
-import Banque from '../views/Banque.vue'
 import Balance from '../views/Balance.vue'
 import Livre from '../views/Livre.vue'
 import Profile from '../views/Profile.vue'
 import Login from '../views/Login.vue'
+import Operations from '../views/Operations.vue'
+import PlanComptable from '../views/PlanComptable.vue'
 
 const routes = [
   {
     path: '/',
     name: 'Home',
-    component: Index
+    component: Index,
+    beforeEnter: (to, from, next) =>{
+      if (!localStorage.getItem('token')) {
+        next('/login')
+      }else{ 
+        next()
+      }
+    }
   },
 
   {
-    path: '/:id/compte-achats',
-    name: 'Achat',
-    component: Achat,
-    props:  true
-  },
-
-  {
-    path: '/:id/compte-ventes',
-    name: 'Vente',
-    component: Vente,
-    props: true
-  },
-  {
-    path: '/:id/compte-payements',
-    name: 'Paye',
-    component: Paye,
-    props: true
+    path: '/:id/:type',
+    name: 'Operations',
+    component: Operations,
+    props:  true,
+    beforeEnter: (to, from, next) =>{
+      if (!localStorage.getItem('token')) {
+        next('/login')
+      }else{ 
+        next()
+      }
+    }
   },
   {
-    path: '/:id/compte-banque',
-    name: 'Banque',
-    component: Banque
-  },
-  {
-    path: '/:id/compte-operations-diverses',
-    name: 'Od',
-    component: Od,
-    props: true
+    path: '/plan-comptable',
+    name: 'PlanComptable',
+    component: PlanComptable,
+    beforeEnter: (to, from, next) =>{
+      if (!localStorage.getItem('token')) {
+        next('/login')
+      }else{ 
+        next()
+      }
+    }
   },
   {
     path: '/balance',
     name: 'Balance',
-    component: Balance
+    component: Balance,
+    beforeEnter: (to, from, next) =>{
+      if (!localStorage.getItem('token')) {
+        next('/login')
+      }else{ 
+        next()
+      }
+    }
   },
   {
     path: '/le-grand-livre',
     name: 'Livre',
-    component: Livre
+    component: Livre,
+    beforeEnter: (to, from, next) =>{
+      if (!localStorage.getItem('token')) {
+        next('/login')
+      }else{ 
+        next()
+      }
+    }
   },
   {
     path: '/mon-profile',
     name: 'Profile',
-    component: Profile
+    component: Profile,
+    beforeEnter: (to, from, next) =>{
+      if (!localStorage.getItem('token')) {
+        next('/login')
+      }else{ 
+        next()
+      }
+    }
   },
   {
     path: '/login',

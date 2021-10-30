@@ -5,7 +5,8 @@ export default createStore({
     isInitialize: false,
     types: [],
     months: [],
-    exercices: []
+    exercices: [],
+    baseUrl: 'http://gescompta.lce-ci.com/public'
   },
   mutations: {
     initialize: (state, type, month, exercice) => {

@@ -7,163 +7,42 @@
                         <div class="header-top-wraper">
                             <div class="row">
                                 <div class="col-lg-1 col-md-0 col-sm-1 col-xs-12">
-                                    <div class="menu-switcher-pro">
+                                    <!-- <div class="menu-switcher-pro">
                                         <button type="button" id="sidebarCollapse" class="btn bar-button-pro header-drl-controller-btn btn-info navbar-btn">
                                             <i class="icon nalika-menu-task"></i>
                                         </button>
-                                    </div>
+                                    </div> -->
                                 </div>
                                 <div class="col-lg-6 col-md-7 col-sm-6 col-xs-12">
-                                    <div class="header-top-menu tabl-d-n hd-search-rp">
+                                    <!--<div class="header-top-menu tabl-d-n hd-search-rp">
                                         <div class="breadcome-heading">
-                                            <form role="search" class="">
+                                            <form role="search" class="" @submit.prevent="">
                                                 <input type="text" placeholder="Search..." class="form-control">
                                                 <a href=""><i class="fa fa-search"></i></a>
                                             </form>
                                         </div>
-                                    </div>
+                                    </div> -->
                                 </div>
                                 <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
                                     <div class="header-right-info">
                                         <ul class="nav navbar-nav mai-top-nav header-right-menu">
-                                            <li class="nav-item dropdown">
-                                                <a href="#" data-toggle="dropdown" role="button" aria-expanded="false" class="nav-link dropdown-toggle"><i class="icon nalika-mail" aria-hidden="true"></i><span class="indicator-ms"></span></a>
-                                                <div role="menu" class="author-message-top dropdown-menu animated zoomIn">
-                                                    <div class="message-single-top">
-                                                        <h1>Message</h1>
-                                                    </div>
-                                                    <ul class="message-menu">
-                                                        <li>
-                                                            <a href="#">
-                                                                <div class="message-img">
-                                                                    <img src="assets/img/contact/1.jpg" alt="">
-                                                                </div>
-                                                                <div class="message-content">
-                                                                    <span class="message-date">16 Sept</span>
-                                                                    <h2>Advanda Cro</h2>
-                                                                    <p>Please done this project as soon possible.</p>
-                                                                </div>
-                                                            </a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="#">
-                                                                <div class="message-img">
-                                                                    <img src="assets/img/contact/4.jpg" alt="">
-                                                                </div>
-                                                                <div class="message-content">
-                                                                    <span class="message-date">16 Sept</span>
-                                                                    <h2>Sulaiman din</h2>
-                                                                    <p>Please done this project as soon possible.</p>
-                                                                </div>
-                                                            </a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="#">
-                                                                <div class="message-img">
-                                                                    <img src="assets/img/contact/3.jpg" alt="">
-                                                                </div>
-                                                                <div class="message-content">
-                                                                    <span class="message-date">16 Sept</span>
-                                                                    <h2>Victor Jara</h2>
-                                                                    <p>Please done this project as soon possible.</p>
-                                                                </div>
-                                                            </a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="#">
-                                                                <div class="message-img">
-                                                                    <img src="assets/img/contact/2.jpg" alt="">
-                                                                </div>
-                                                                <div class="message-content">
-                                                                    <span class="message-date">16 Sept</span>
-                                                                    <h2>Victor Jara</h2>
-                                                                    <p>Please done this project as soon possible.</p>
-                                                                </div>
-                                                            </a>
-                                                        </li>
-                                                    </ul>
-                                                    <div class="message-view">
-                                                        <a href="#">View All Messages</a>
-                                                    </div>
-                                                </div>
-                                            </li>
-                                            <li class="nav-item"><a href="#" data-toggle="dropdown" role="button" aria-expanded="false" class="nav-link dropdown-toggle"><i class="icon nalika-alarm" aria-hidden="true"></i><span class="indicator-nt"></span></a>
-                                                <div role="menu" class="notification-author dropdown-menu animated zoomIn">
-                                                    <div class="notification-single-top">
-                                                        <h1>Notifications</h1>
-                                                    </div>
-                                                    <ul class="notification-menu">
-                                                        <li>
-                                                            <a href="#">
-                                                                <div class="notification-icon">
-                                                                    <i class="icon nalika-tick" aria-hidden="true"></i>
-                                                                </div>
-                                                                <div class="notification-content">
-                                                                    <span class="notification-date">16 Sept</span>
-                                                                    <h2>Advanda Cro</h2>
-                                                                    <p>Please done this project as soon possible.</p>
-                                                                </div>
-                                                            </a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="#">
-                                                                <div class="notification-icon">
-                                                                    <i class="icon nalika-cloud" aria-hidden="true"></i>
-                                                                </div>
-                                                                <div class="notification-content">
-                                                                    <span class="notification-date">16 Sept</span>
-                                                                    <h2>Sulaiman din</h2>
-                                                                    <p>Please done this project as soon possible.</p>
-                                                                </div>
-                                                            </a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="#">
-                                                                <div class="notification-icon">
-                                                                    <i class="icon nalika-folder" aria-hidden="true"></i>
-                                                                </div>
-                                                                <div class="notification-content">
-                                                                    <span class="notification-date">16 Sept</span>
-                                                                    <h2>Victor Jara</h2>
-                                                                    <p>Please done this project as soon possible.</p>
-                                                                </div>
-                                                            </a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="#">
-                                                                <div class="notification-icon">
-                                                                    <i class="icon nalika-bar-chart" aria-hidden="true"></i>
-                                                                </div>
-                                                                <div class="notification-content">
-                                                                    <span class="notification-date">16 Sept</span>
-                                                                    <h2>Victor Jara</h2>
-                                                                    <p>Please done this project as soon possible.</p>
-                                                                </div>
-                                                            </a>
-                                                        </li>
-                                                    </ul>
-                                                    <div class="notification-view">
-                                                        <a href="#">View All Notification</a>
-                                                    </div>
-                                                </div>
-                                            </li>
                                             <li class="nav-item">
                                                 <a href="#" data-toggle="dropdown" role="button" aria-expanded="false" class="nav-link dropdown-toggle">
                                                     <i class="icon nalika-user"></i>
-                                                    <span class="admin-name">Advanda Cro</span>
+                                                    <span class="admin-name"> {{ name }} </span>
                                                     <i class="icon nalika-down-arrow nalika-angle-dw"></i>
                                                 </a>
-                                                <ul role="menu" class="dropdown-header-top author-log dropdown-menu animated zoomIn">
+                                                <ul role="menu" class="dropdown-header-top author-log dropdown-menu animated zoomIn" style="left:-100px;">
                                                     <li>
                                                         <router-link :to="{name: 'Profile' }">
                                                             <span class="icon nalika-user author-log-ic"></span> Mon Profile
                                                         </router-link>
                                                     </li>
-                                                    <li><a href="login.html"><span class="icon nalika-unlocked author-log-ic"></span> Deconnexion</a>
+                                                    <li><a href="" @click.prevent="deconnexion()"><span class="icon nalika-unlocked author-log-ic"></span> Deconnexion</a>
                                                     </li>
                                                 </ul>
                                             </li>
-                                            <li class="nav-item nav-setting-open"><a href="#" role="button" class="nav-link dropdown-toggle" data-toggle="modal" data-target="#exampleModalCenter"><i class="icon nalika-menu-task"></i></a>
+                                            <li v-if="false" class="nav-item nav-setting-open"><a href="#" role="button" class="nav-link dropdown-toggle" data-toggle="modal" data-target="#exampleModalCenter"><i class="icon nalika-menu-task"></i></a>
                                             </li>
                                         </ul>
                                     </div>
@@ -174,7 +53,7 @@
                 </div>
             </div>
         </div>
-        <!-- Mobile Menu start -->
+       <!-- Mobile Menu start -->
         <div class="mobile-menu-area">
             <div class="container">
                 <div class="row">
@@ -182,129 +61,30 @@
                         <div class="mobile-menu">
                             <nav id="dropdown">
                                 <ul class="mobile-menu-nav">
-                                    <li><a data-toggle="collapse" data-target="#Charts" href="#">Home <span class="admin-project-icon nalika-icon nalika-down-arrow"></span></a>
-                                        <ul class="collapse dropdown-header-top">
-                                            <li><a href="index.html">Dashboard v.1</a></li>
-                                            <li><a href="index-1.html">Dashboard v.2</a></li>
-                                            <li><a href="index-3.html">Dashboard v.3</a></li>
-                                            <li><a href="product-list.html">Product List</a></li>
-                                            <li><a href="product-edit.html">Product Edit</a></li>
-                                            <li><a href="product-detail.html">Product Detail</a></li>
-                                            <li><a href="product-cart.html">Product Cart</a></li>
-                                            <li><a href="product-payment.html">Product Payment</a></li>
-                                            <li><a href="analytics.html">Analytics</a></li>
-                                            <li><a href="widgets.html">Widgets</a></li>
-                                        </ul>
+                                    <li>
+                                        <router-link class="active" :to="{name: 'Home'}" >
+                                            <i class="icon nalika-home icon-wrap"></i>
+                                            <span class="mini-click-non"> ACCUEIL</span>
+                                        </router-link>
                                     </li>
-                                    <li><a data-toggle="collapse" data-target="#demo" href="#">Mailbox <span class="admin-project-icon nalika-icon nalika-down-arrow"></span></a>
-                                        <ul id="demo" class="collapse dropdown-header-top">
-                                            <li><a href="mailbox.html">Inbox</a>
-                                            </li>
-                                            <li><a href="mailbox-view.html">View Mail</a>
-                                            </li>
-                                            <li><a href="mailbox-compose.html">Compose Mail</a>
-                                            </li>
-                                        </ul>
+                                    <li>
+                                        <router-link :to="{name: 'PlanComptable'}" >
+                                            <i class="icon nalika-smartphone-call icon-wrap"></i>
+                                            <span class="mini-click-non"> PLAN COMPTABLE</span>
+                                        </router-link>
                                     </li>
-                                    <li><a data-toggle="collapse" data-target="#others" href="#">Miscellaneous <span class="admin-project-icon nalika-icon nalika-down-arrow"></span></a>
+                                    <li>
+                                        <a href="#"  class="nav-link dropdown-toggle" data-toggle="modal" data-target="#exampleModalCenterHeader" >
+                                            <i class="icon nalika-forms icon-wrap"></i>
+                                            <span class="mini-click-non">AJOUTER JOURNAL</span>
+                                        </a>
+                                    </li>
+                                    <li><a data-toggle="collapse" data-target="#others" href="#"><i class="icon nalika-new-file icon-wrap"></i> JOURNAL <span class="admin-project-icon nalika-icon nalika-down-arrow"></span></a>
                                         <ul id="others" class="collapse dropdown-header-top">
-                                            <li><a href="file-manager.html">File Manager</a></li>
-                                            <li><a href="contacts.html">Contacts Client</a></li>
-                                            <li><a href="projects.html">Project</a></li>
-                                            <li><a href="project-details.html">Project Details</a></li>
-                                            <li><a href="blog.html">Blog</a></li>
-                                            <li><a href="blog-details.html">Blog Details</a></li>
-                                            <li><a href="404.html">404 Page</a></li>
-                                            <li><a href="500.html">500 Page</a></li>
-                                        </ul>
-                                    </li>
-                                    <li><a data-toggle="collapse" data-target="#Miscellaneousmob" href="#">Interface <span class="admin-project-icon nalika-icon nalika-down-arrow"></span></a>
-                                        <ul id="Miscellaneousmob" class="collapse dropdown-header-top">
-                                            <li><a href="google-map.html">Google Map</a>
-                                            </li>
-                                            <li><a href="data-maps.html">Data Maps</a>
-                                            </li>
-                                            <li><a href="pdf-viewer.html">Pdf Viewer</a>
-                                            </li>
-                                            <li><a href="x-editable.html">X-Editable</a>
-                                            </li>
-                                            <li><a href="code-editor.html">Code Editor</a>
-                                            </li>
-                                            <li><a href="tree-view.html">Tree View</a>
-                                            </li>
-                                            <li><a href="preloader.html">Preloader</a>
-                                            </li>
-                                            <li><a href="images-cropper.html">Images Cropper</a>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                    <li><a data-toggle="collapse" data-target="#Chartsmob" href="#">Charts <span class="admin-project-icon nalika-icon nalika-down-arrow"></span></a>
-                                        <ul id="Chartsmob" class="collapse dropdown-header-top">
-                                            <li><a href="bar-charts.html">Bar Charts</a>
-                                            </li>
-                                            <li><a href="line-charts.html">Line Charts</a>
-                                            </li>
-                                            <li><a href="area-charts.html">Area Charts</a>
-                                            </li>
-                                            <li><a href="rounded-chart.html">Rounded Charts</a>
-                                            </li>
-                                            <li><a href="c3.html">C3 Charts</a>
-                                            </li>
-                                            <li><a href="sparkline.html">Sparkline Charts</a>
-                                            </li>
-                                            <li><a href="peity.html">Peity Charts</a>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                    <li><a data-toggle="collapse" data-target="#Tablesmob" href="#">Tables <span class="admin-project-icon nalika-icon nalika-down-arrow"></span></a>
-                                        <ul id="Tablesmob" class="collapse dropdown-header-top">
-                                            <li><a href="static-table.html">Static Table</a>
-                                            </li>
-                                            <li><a href="data-table.html">Data Table</a>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                    <li><a data-toggle="collapse" data-target="#formsmob" href="#">Forms <span class="admin-project-icon nalika-icon nalika-down-arrow"></span></a>
-                                        <ul id="formsmob" class="collapse dropdown-header-top">
-                                            <li><a href="basic-form-element.html">Basic Form Elements</a>
-                                            </li>
-                                            <li><a href="advance-form-element.html">Advanced Form Elements</a>
-                                            </li>
-                                            <li><a href="password-meter.html">Password Meter</a>
-                                            </li>
-                                            <li><a href="multi-upload.html">Multi Upload</a>
-                                            </li>
-                                            <li><a href="tinymc.html">Text Editor</a>
-                                            </li>
-                                            <li><a href="dual-list-box.html">Dual List Box</a>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                    <li><a data-toggle="collapse" data-target="#Appviewsmob" href="#">App views <span class="admin-project-icon nalika-icon nalika-down-arrow"></span></a>
-                                        <ul id="Appviewsmob" class="collapse dropdown-header-top">
-                                            <li><a href="basic-form-element.html">Basic Form Elements</a>
-                                            </li>
-                                            <li><a href="advance-form-element.html">Advanced Form Elements</a>
-                                            </li>
-                                            <li><a href="password-meter.html">Password Meter</a>
-                                            </li>
-                                            <li><a href="multi-upload.html">Multi Upload</a>
-                                            </li>
-                                            <li><a href="tinymc.html">Text Editor</a>
-                                            </li>
-                                            <li><a href="dual-list-box.html">Dual List Box</a>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                    <li><a data-toggle="collapse" data-target="#Pagemob" href="#">Pages <span class="admin-project-icon nalika-icon nalika-down-arrow"></span></a>
-                                        <ul id="Pagemob" class="collapse dropdown-header-top">
-                                            <li><a href="login.html">Login</a>
-                                            </li>
-                                            <li><a href="register.html">Register</a>
-                                            </li>
-                                            <li><a href="lock.html">Lock</a>
-                                            </li>
-                                            <li><a href="password-recovery.html">Password Recovery</a>
+                                            <li v-for="type in types" :key="type.id">
+                                                <a class="" :href="'/'+type.id+'/'+type.intitule.toLowerCase()" >
+                                                    <span class="mini-sub-pro">     {{ type.intitule.toLowerCase() }}</span>
+                                                </a>
                                             </li>
                                         </ul>
                                     </li>
@@ -320,7 +100,7 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                        <div class="breadcome-list" style="margin: 60px 0px 30px 0px">
+                        <div class="breadcome-list" style="margin: 20px 0px 30px 0px">
                             <div class="row">
                                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
                                     <div class="breadcomb-wp">
@@ -344,11 +124,13 @@
                                         <ul role="menu" class="dropdown-header-top author-log dropdown-menu animated zoomIn">
                                             <li>
                                                 <router-link :to="{name: 'Livre'}">
-                                                    <span class="icon nalika-home author-log-ic"></span>   Grand Libre
+                                                       Grand Libre
                                                 </router-link>
                                             </li>
                                             <li>
-                                                <router-link :to="{name: 'Balance'}"><span class="icon nalika-user author-log-ic"></span>  Balance</router-link>
+                                                <router-link :to="{name: 'Balance'}">
+                                                    Balance
+                                                </router-link>
                                             </li>
                                         </ul>
                                     </div>
@@ -359,82 +141,131 @@
                 </div>
             </div>
         </div>
-        <!-- Modal -->
-        <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered" role="document">
-          <div class="modal-content">
-            <div class="modal-header" >
-                <h5 class="modal-title" id="exampleModalCenterTitle">AJOUTER UNE NOUVELLE CATEGORIE</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body" >
-                    <div class="form-group-inner">
-                        <div class="row">
-                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                                <label class="login2">Code :</label>
-                            </div>
-                            <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
-                                <input type="text" class="form-control" placeholder="Entrer code">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-group-inner">
-                        <div class="row">
-                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                                <label class="login2">Nom categorie :</label>
-                            </div>
-                            <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
-                                <input type="text" class="form-control" placeholder="Entrer nom categorie">
-                            </div>
-                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                                <label class="login2">Icon :</label>
-                            </div>
-                            <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
-                                <select class="form-control" style="margin-top: 10px; border: 1px solid #ddd" >
-                                <option value="">-- Choisir icon --</option>
-                                <option value="icon nalika-mail icon-wrap"><i class="icon nalika-mail icon-wrap"></i>Icon 1</option>
-                                <option value=""><i class="icon nalika-diamond icon-wrap"></i></option>
-                                <option value=""><i class="icon nalika-pie-chart icon-wrap"></i></option>
-                                <option value=""><i class="icon nalika-pie-chart icon-wrap"></i></option>
-                                <option value=""><i class="icon nalika-bar-chart icon-wrap"></i></option>
-                                <option value=""><i class="icon nalika-table icon-wrap"></i></option>
-                                <option value=""><i class="icon nalika-forms icon-wrap"></i></option>
-                                <option value=""><i class="icon nalika-smartphone-call icon-wrap"></i></option>
-                                <option value=""><i class="icon nalika-new-file icon-wrap"></i></option>
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-            </div>
-            <div class="modal-footer" >
-                <button type="button" class="btn btn-ctl-bt waves-effect waves-light" data-dismiss="modal">Annuler </button>
-                <button type="button" class="btn btn-primary">Enregistrer</button>
-            </div>
-          </div>
+        <div v-if="trytocreatetype">
+            <p v-if="status" class="text-success">{{ message }}</p>
+            <p v-else class="text-danger">{{ message }}</p>
         </div>
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModalCenterHeader" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header" >
+                    <h5 class="modal-title" id="exampleModalCenterTitle">AJOUTER UN NOUVEAU JOURNAL</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body" >
+                        <div class="form-group-inner">
+                            <div class="row">
+                                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                    <label class="login2">Code :</label>
+                                </div>
+                                <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
+                                    <input v-model='type.code' type="text" class="form-control" placeholder="Entrer code">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group-inner">
+                            <div class="row">
+                                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                    <label class="login2">Nom categorie :</label>
+                                </div>
+                                <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
+                                    <input v-model="type.intitule" type="text" class="form-control" placeholder="Entrer nom categorie">
+                                </div>
+                                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                    <label class="login2">Icon :</label>
+                                </div>
+                                <div  class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
+                                    <select v-model="type.icon" class="form-control" style="margin-top: 10px; border: 1px solid #ddd" >
+                                        <option value="">-- Choisir icon --</option>
+                                        <option value="icon nalika-mail icon-wrap">icon mail <i class="icon nalika-mail icon-wrap"></i></option>
+                                        <option value="icon nalika-diamond icon-wrap">icon diamond <i class="icon nalika-diamond"></i></option>
+                                        <option value="icon nalika-pie-chart icon-wrap"> icon pie-chart <i class="icon nalika-pie-chart "></i></option>
+                                        <option value="icon nalika-bar-chart icon-wrap">icon nalika-bar-chart <i class="icon nalika-bar-chart "></i></option>
+                                        <option value="icon nalika-table icon-wrap">icon table <i class="icon nalika-table icon-wrap"></i></option>
+                                        <option value="icon nalika-forms icon-wrap">icon forms <i class="icon nalika-forms icon-wrap"></i></option>
+                                        <option value="icon nalika-smartphone-call icon-wrap">icon smartphone-call <i class="icon nalika-smartphone-call "></i></option>
+                                        <option value="icon nalika-new-file icon-wrap">icon new-file <span class="icon nalika-new-file "></span></option>
+                                    </select>
+                                </div>
+
+                            </div>
+                        </div>
+                </div>
+                <div class="modal-footer" >
+                    <button type="button" class="btn btn-ctl-bt waves-effect waves-light" data-dismiss="modal">Annuler </button>
+                    <button type="button" @click="createType()" class="btn btn-primary" data-dismiss="modal" >Enregistrer</button>
+                </div>
+            </div>
+            </div>
         </div>
     </div>
 </template>
 <script>
-
+import axios from 'axios'
 export default ({
 name: 'Header',
 props: ['titre', 'icon'],
 data() {
     return {
-    //
+        name: localStorage.getItem("name"),
+        types: [],
+        type: { 
+            code:'',
+            intitule :'',
+            icon:''
+        },
+        trytocreatetype:false,
+        status:'',
+        message:''
     }
 },
-methods: { 
-    updateYear(){
-        console.log(this.$ref('year'))
+mounted() {
+    this.gettypes()
+},
+methods: {
+    gettypes() {
+        axios.get('/types-comptables')
+        .then((res)=>{
+            this.types= res.data.type
+        })
+    },
+    createType(){
+        axios.post('/types-comptables', this.type)
+        .then((res) => {
+            this.trytocreatetype = true
+            this.status = true
+            this.message = "Nouveau journal comptable créé avec succès."
+            this.closeMessage()
+        })
+        .catch((err) => {
+            this.trytocreatetype = true
+            this.status = false
+            this.message = err.message
+            this.closeMessage()
+        })
+    },
+    closeMessage(){
+        setTimeout(() =>{
+        this.trytocreatetype = false,
+        this.status = '',
+        this.message = ''
+        }, 5000)
+    },
+    deconnexion(){
+        localStorage.removeItem('token')
+        this.$router.push({path: '/login'})
     }
+
 }
 })
 </script>
 <style scoped>
+    .mobile-menu-area{
+        text-align: left;
+    }
     .breadcomb-report .author-log{
         opacity: 1;
         /* //top: 165%; */
@@ -443,12 +274,14 @@ methods: {
         width: 200px;
         padding: 10px 0px;
         background: #1b2a47;
-        left: 67%;
+        /*left: -100px;*/
     }
+
     .breadcomb-report ul li .author-log {
         position: absolute;
         z-index: 999;
     }
+
 
     .breadcomb-report li .dropdown-menu {
         border: 0px solid #ccc;
@@ -487,4 +320,7 @@ methods: {
     .modal-body .col-lg-4{
         text-align: end;
     }
+
+    /** Icon css */
+    
 </style>

@@ -1,7 +1,7 @@
 <template>
     <section class="ftco-section">
 		<div class="container">
-			
+
 			<div class="row justify-content-center">
 				<div class="col-md-6 col-lg-4">
 					<div class="login-wrap py-5">
@@ -30,8 +30,8 @@
                 </div>
 	          </form>
 	          <div class="w-100 text-center mt-4 text">
-	          	<p class="mb-0">Vous n'avez pas encore de compte ?</p>
-		          <a href="#">Inscrivez vous</a>
+	            <p class="mb-0">Vous n'avez pas encore de compte ?</p>
+		          <a href="mailto:hotline@lce-ci.com">Contactez nous</a>
 	          </div>
 	        </div>
 				</div>
@@ -61,39 +61,21 @@ export default({
   methods: {
     getconnected(){
       this.sending = true
-      axios.post('users/login', this.data)
+      axios.post('auth/login', this.data)
       .then((res)=>{
-        this.send = true
-        this.sending = false
-        this.status = res.data.status
-        if (this.status){
-
-          console.log(res.data)
-          
+          this.send = true
+          this.sending = false
+          this.status = res.data
           let token = res.data.access_token
-          let nom = res.data.user.nom
-          let prenom = res.data.user.prenom
+          let name = res.data.user.name
           let email = res.data.user.email
-          let is_admin = res.data.user.is_admin
-          let user_id = res.data.user.id
-          console.log(user_id)
           localStorage.setItem('token', token)
-          localStorage.setItem('user_id', user_id)
-          localStorage.setItem('nom', nom)
-          localStorage.setItem('prenom', prenom)
+          localStorage.setItem('name', name)
           localStorage.setItem('email', email)
-          localStorage.setItem('is_admin', is_admin)
-          
           this.message = "connexion effectuté avec succès."
           setTimeout(()=>{
-            this.$router.push({path: '/'})
+            window.location.href = '/'
           }, 2000)
-        }else{
-          this.message = res.data.message
-          localStorage.removeItem('token');
-          localStorage.removeItem('user');
-        }
-
       })
       .catch((err)=>{
         this.send = true
@@ -8451,5 +8433,5 @@ h1, h2, h3, h4, h5,
         background: #b689b0;
         color: #fff; }
 
-	
+
 </style>
